@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Login · SQL Injection Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <span class="brand">SQL Injection Lab</span>
+      <span class="subtitle">Variant 1 · Authentication bypass</span>
+    </div>
+    <div class="mode-switch">
+      <span id="mode-badge" class="badge"></span>
+      <button id="mode-toggle" type="button" class="small secondary">Switch mode</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card narrow">
+      <h1>Staff login</h1>
+      <form id="login-form" class="stack" autocomplete="off">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" spellcheck="false" required autofocus>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Log in</button>
+      </form>
+      <div id="result" class="flash" hidden></div>
+    </section>
+
+    <section id="query-card" class="card" hidden>
+      <h3>Query sent to the database</h3>
+      <pre id="query" class="code"></pre>
+      <p id="params" class="muted" hidden></p>
+      <p id="db-error" class="flash error" hidden></p>
+    </section>
+  </main>
+
+  <footer>IIIT Allahabad · IT-30001 Cyber Security · Autumn 2026. Deliberately vulnerable: run on localhost only.</footer>
+  <script src="common.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

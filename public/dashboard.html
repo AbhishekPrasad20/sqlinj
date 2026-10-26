@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · SQL Injection Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <a class="brand" href="/">SQL Injection Lab</a>
+      <span class="subtitle">Variant 1 · Authentication bypass</span>
+    </div>
+    <div class="mode-switch">
+      <span id="mode-badge" class="badge"></span>
+      <button id="mode-toggle" type="button" class="small secondary">Switch mode</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="eyebrow">Dashboard</p>
+      <h1 id="greeting">Loading…</h1>
+      <p id="role" class="muted"></p>
+      <button id="logout" type="button" class="small secondary">Log out</button>
+    </section>
+
+    <section id="admin-card" class="card" hidden>
+      <h3>Admin area: all user accounts</h3>
+      <table>
+        <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th></tr></thead>
+        <tbody id="users"></tbody>
+      </table>
+    </section>
+
+    <section id="denied-card" class="card" hidden>
+      <h3>Admin area</h3>
+      <p class="muted">Access denied: this account is not an administrator.</p>
+    </section>
+  </main>
+
+  <footer>IIIT Allahabad · IT-30001 Cyber Security · Autumn 2026. Deliberately vulnerable: run on localhost only.</footer>
+  <script src="common.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

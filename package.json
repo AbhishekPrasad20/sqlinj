@@ -1,0 +1,19 @@
+{
+  "name": "sqli-auth-bypass-lab",
+  "version": "1.0.0",
+  "description": "IT-30001 Web Server Security assignment: SQL injection (Variant 1, authentication bypass), exploited and mitigated.",
+  "private": true,
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-session": "^1.19.0"
+  }
+}
