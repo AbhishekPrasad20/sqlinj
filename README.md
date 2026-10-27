@@ -26,6 +26,7 @@ A toggle button in the application header allows switching between these modes a
 | Member | Roll Number | Category | Variant Implemented | Code | Mitigation |
 |---|---|---|---|---|---|
 | Abhishek Prasad | IIB2024002 | SQL Injection | Variant 1: Authentication Bypass | [`sqli.js`](sqli.js), [`server.js`](server.js), [`public/`](public/) | Parameterised Queries |
+| Piyush | IIT2024268 | OS Command Injection | Variant 1: In-band (command output returned) | [`app.py`](OS%20Command%20Injection/app.py), [`test_app.py`](OS%20Command%20Injection/test_app.py) | Argument-vector execution with `shell=False` |
 
 ## Installation and Setup
 
@@ -161,6 +162,11 @@ sqlinj/
 ├── README.md
 ├── .gitignore
 │
+├── OS Command Injection/
+│   ├── app.py
+│   ├── test_app.py
+│   └── README.md
+│
 ├── public/
 │   ├── index.html
 │   ├── dashboard.html
@@ -193,11 +199,42 @@ The complete assignment write-up, covering items **(a)–(e)**, is available her
 
 **[SQL Injection Authentication Bypass — Technical Report](docs/sqli-auth-bypass.md)**
 
+## OS Command Injection: In-band Variant
+
+The project also includes a local-only Python lab demonstrating the **in-band
+OS command injection** variant. The vulnerable endpoint inserts submitted
+text into a shell command and returns its output. The mitigated endpoint passes
+the text as a separate argument to a fixed executable with `shell=False`, so
+shell metacharacters are treated as data.
+
+The demonstration uses a harmless echo payload and binds only to
+`127.0.0.1`. Do not expose it to a network or test it against any other system.
+Python 3 is required; the lab has no third-party dependencies.
+
+To run it in PowerShell from the repository root:
+
+```powershell
+Set-Location ".\OS Command Injection"
+python app.py
+```
+
+Open **http://127.0.0.1:8000/**, then stop the lab with **Ctrl+C** in
+PowerShell. Run its focused tests with:
+
+```powershell
+python -m unittest -v test_app
+```
+
+See the [OS Command Injection assignment guide](<OS%20Command%20Injection/README.md>)
+for the vulnerable and mitigated code paths, demonstration input, explanation
+of root cause, and mitigation alternatives.
+
 ## Security and Ethical Considerations
 
 **WARNING: This application is intentionally vulnerable.**
 
 - The server binds exclusively to `127.0.0.1`.
+- The OS command injection lab also binds exclusively to `127.0.0.1`.
 - The application must not be deployed to a public server or exposed to an external network.
 - All exploitation demonstrations must be conducted against the local test environment.
 - The vulnerable implementation exists exclusively for educational and research purposes.
